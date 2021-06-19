@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Login Page</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="/static/styleLogin.css">
+    </head>
+    <body>
+        <div class="loginTitle">
+            <div>
+                The Big Bang Theory/Young Sheldon
+            </div>
+            <div>
+                Sheldon's Enemy List
+            </div>
+        </div>
+
+        <div class="form">
+            <form action="/login" method="post">
+                <div class="form-group">
+                    <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" name="password" placeholder="Password" type="password">
+                </div>
+                <button class="button" type="submit">Log In</button>
+            </form>
+        </div>
+        
+        <div class="hint">
+            Doesn't have an account?
+            <a href="/register">Register</a>
+        </div>
+    </body>
+<html>

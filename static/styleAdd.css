@@ -1,0 +1,36 @@
+body {
+    background-color:Darkred; 
+}
+
+.button {
+    color: white;
+    background-color: #000000;
+}
+
+form {
+    text-align: center;
+    width: auto;
+    display: inline-block;
+    padding-left: 44%;
+    padding-top: 55px;
+}
+
+.loginTitle {
+    padding-top: 15%;
+    color: yellow;
+    text-align: center;
+    font-weight: bold;
+    font-size: 200%;
+}
+
+.hint {
+    color: black;
+    text-align: center;
+    font-weight: bold;
+    font-size: 100%;
+}
+
+.center {
+    padding-top: 5%;
+    text-align: center;
+}

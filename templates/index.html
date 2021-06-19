@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Enemies List</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="/static/style.css">
+    </head>
+    <body style="background-color: #301934;">
+
+        <div class="container" style="padding-top: 50px;">
+
+            <div class="row">
+                <div id="head" class="col-12">
+                    ENEMIES LIST (Sorted by Name)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-4">
+                  NAME
+                </div>
+                <div class="col-8">
+                  CRIME
+                </div>
+            </div>
+
+            <div class="row">
+                <div id="body" class="col-12" style="padding-top: 20px; padding-bottom: 20px;">
+
+                    <table>
+                        <tbody>
+                            {% for enemy in enemies %}
+                                <tr>
+                                    <td id="sectionN">{{ enemy['name'] }}</td>
+                                    <td id="sectionR">( {{ enemy['reason'] }} )</td>
+                                </tr>
+    
+                                <tr>
+                                    <td id="lines">----------------</td>
+                                    <td id="lines">---------------------------------</td>
+                                </tr>
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="centeredadd">
+            <a href="/add" class="button">ADD AN ENEMY</a>
+            <a href="/delete" class="button">LET IT GO</a>
+            <a href="https://www.youtube.com/watch?v=lT0nDLCmV6s" class="button">ABOUT</a>
+        </div>
+
+        <div class="logout">
+            <a href="/logout">Log Out</a>
+        </div>
+
+    </body>
+<html>
