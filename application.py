@@ -51,7 +51,7 @@ def login_required(f):
 @app.route("/", methods=["GET", "POST"])
 @login_required
 def index():
-    enemies = db.execute("SELECT name, reason FROM enemies WHERE enemy_id=?", session["user_id"])
+    enemies = db.execute("SELECT name, reason FROM enemies WHERE enemy_id=? ORDER BY name", session["user_id"])
     print(enemies)
     return render_template("index.html", enemies=enemies)
         
@@ -79,6 +79,12 @@ def delete():
         if not request.form.get("name"):
             return redirect("/delete")
             
+        rows = db.execute("SELECT * FROM enemies WHERE name = ? AND enemy_id = ?", request.form.get("name"), session["user_id"])
+
+        if len(rows) < 1:
+            errorMessage = "Cannot Find Such Enemy"
+            return render_template("delete.html", errorMessage=errorMessage)
+            
         db.execute("DELETE FROM enemies WHERE enemy_id=? AND name=?", session["user_id"], request.form.get("name"))
         
         return redirect("/")
@@ -89,24 +95,26 @@ def delete():
 def login():
     # Forget any user_id
     session.clear()
-
     # User reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
 
         # Ensure username was submitted
         if not request.form.get("username"):
-            return redirect("/login")
+            errorMessage = "Must Have A Username"
+            return render_template("login.html", errorMessage=errorMessage)
 
         # Ensure password was submitted
         elif not request.form.get("password"):
-            return redirect("/login")
+            errorMessage = "Must Have A Password"
+            return render_template("login.html", errorMessage=errorMessage)
 
         # Query database for username
         rows = db.execute("SELECT * FROM users WHERE username = ?", request.form.get("username"))
 
         # Ensure username exists and password is correct
         if len(rows) != 1 or not check_password_hash(rows[0]["hash"], request.form.get("password")):
-            return redirect("/login")
+            errorMessage = "Password Or Username Is Incorrect"
+            return render_template("login.html", errorMessage=errorMessage)
 
         # Remember which user has logged in
         session["user_id"] = rows[0]["id"]
@@ -121,31 +129,37 @@ def login():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     """Register user"""
+    errorMessage = ""
     if request.method == "POST":
         # Ensure username was submitted
         if not request.form.get("username"):
-            return redirect("/register")
+            errorMessage="Must Have A Username"
+            return render_template("register.html", errorMessage=errorMessage)
 
         # Ensure password was submitted
         elif not request.form.get("password"):
-            return redirect("/register")
+            errorMessage="Must Have A Password"
+            return render_template("register.html", errorMessage=errorMessage)
 
         # Ensure confirmation of the password was submitted
         elif not request.form.get("confirmation"):
-            return redirect("/register")
+            errorMessage="Must Confirm Your Password"
+            return render_template("register.html", errorMessage=errorMessage)
 
         Rpassword = request.form.get("password")
         Repassword = request.form.get("confirmation")
         Rusername = request.form.get("username")
 
         if (Rpassword != Repassword):
-            return redirect("/register")
+            errorMessage="Passwords Doesn't Match"
+            return render_template("register.html", errorMessage=errorMessage)
 
         rowsR = db.execute("SELECT * FROM users WHERE username = ?", Rusername)
         print(rowsR)
 
         if len(rowsR) != 0:
-            return redirect("/register")
+            errorMessage="Invalid Username, Please Choose Another"
+            return render_template("register.html", errorMessage=errorMessage)
         else:
             db.execute("INSERT INTO users (username, hash) VALUES (?, ?)", Rusername, generate_password_hash(Rpassword))
 
@@ -163,4 +177,8 @@ def logout():
     # Redirect user to login form
     return redirect("/")
     
+@app.route("/origin")
+@login_required
+def origin():
+    return render_template("origin.html")
     
