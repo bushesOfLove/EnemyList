@@ -7,7 +7,7 @@ awscli==1.19.95
 backports.shutil-get-terminal-size==1.0.0
 backports.shutil-which==3.5.2
 beautifulsoup4==4.9.3
-botocore==1.20.95F
+botocore==1.20.95
 braceexpand==0.1.7
 cachelib==0.1.1
 cairocffi==1.2.0
