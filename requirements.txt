@@ -1,4 +1,5 @@
 appdirs==1.4.4
+asgiref==3.4.0
 astroid==2.5.6
 attrs==20.3.0
 Authlib==0.15.4
@@ -25,6 +26,7 @@ cssselect2==0.4.1
 cycler==0.10.0
 defusedxml==0.7.1
 distlib==0.3.2
+Django==3.2.4
 docutils==0.15.2
 EditorConfig==0.12.3
 filelock==3.0.12
