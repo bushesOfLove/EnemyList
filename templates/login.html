@@ -4,13 +4,14 @@
         <title>Login Page</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="/static/styleLogin.css">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     </head>
     <body>
-        
+
         <div style="color: black; font-weight: bold; text-align: center;">
             Hint: {{ errorMessage }}
         </div>
-        
+
         <div class="loginTitle">
             <div>
                 The Big Bang Theory/Young Sheldon
@@ -34,7 +35,7 @@
                 <button class="button" type="submit">Log In</button>
             </form>
         </div>
-        
+
         <div class="hint">
             Doesn't have an account?
             <a href="/register">Register</a>

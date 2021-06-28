@@ -4,6 +4,7 @@
         <title>Enemies List</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="/static/style.css">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     </head>
     <body style="background-color: #301934;">
 
@@ -34,7 +35,7 @@
                                     <td id="sectionN">{{ enemy['name'] }}</td>
                                     <td id="sectionR">( {{ enemy['reason'] }} )</td>
                                 </tr>
-    
+
                                 <tr>
                                     <td id="lines">----------------</td>
                                     <td id="lines">---------------------------------</td>
@@ -48,7 +49,7 @@
             </div>
 
         </div>
-        
+
         <div class="centeredadd">
             <a href="/add" class="button">ADD AN ENEMY</a>
             <a href="/delete" class="button">LET IT GO</a>
