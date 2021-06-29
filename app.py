@@ -1,7 +1,7 @@
 import os
 
 from cs50 import SQL
-from flask import Flask, flash, redirect, render_template, request, session
+from flask import Flask, flash, redirect, render_template, url_for, request, session
 from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.exceptions import default_exceptions, HTTPException, InternalServerError
@@ -43,7 +43,7 @@ def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
         if session.get("user_id") is None:
-            return redirect("/login")
+            return redirect(url_for("login"))
         return f(*args, **kwargs)
     return decorated_function
 
@@ -59,15 +59,15 @@ def index():
 def add():
     if request.method == "POST":
         if not request.form.get("name"):
-            return redirect("/")
+            return redirect(url_for("index"))
 
         # Ensure password was submitted
         elif not request.form.get("reason"):
-            return redirect("/")
+            return redirect(url_for("index"))
             
         db.execute("INSERT INTO enemies (name, reason, enemy_id) VALUES (?, ?, ?)", request.form.get("name"), request.form.get("reason"), session["user_id"])
         
-        return redirect("/")
+        return redirect(url_for("index"))
     else:
         return render_template("add.html")
         
@@ -76,7 +76,7 @@ def add():
 def delete():
     if request.method == "POST":
         if not request.form.get("name"):
-            return redirect("/delete")
+            return redirect(url_for("delete"))
             
         rows = db.execute("SELECT * FROM enemies WHERE name = ? AND enemy_id = ?", request.form.get("name"), session["user_id"])
 
@@ -86,7 +86,7 @@ def delete():
             
         db.execute("DELETE FROM enemies WHERE enemy_id=? AND name=?", session["user_id"], request.form.get("name"))
         
-        return redirect("/")
+        return redirect(url_for("index"))
     else:
         return render_template("delete.html")
 
@@ -119,7 +119,7 @@ def login():
         session["user_id"] = rows[0]["id"]
 
         # Redirect user to home page
-        return redirect("/")
+        return  redirect(url_for("index"))
 
     # User reached route via GET (as by clicking a link or via redirect)
     else:
@@ -162,7 +162,7 @@ def register():
         else:
             db.execute("INSERT INTO users (username, hash) VALUES (?, ?)", Rusername, generate_password_hash(Rpassword))
 
-        return redirect("/")
+        return redirect(url_for("index"))
     else:
         return render_template("register.html")
 
@@ -174,7 +174,7 @@ def logout():
     session.clear()
 
     # Redirect user to login form
-    return redirect("/")
+    return redirect(url_for("index"))
     
 @app.route("/origin")
 @login_required
