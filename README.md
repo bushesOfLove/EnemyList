@@ -14,7 +14,7 @@ adjusting its appearance. At last, it is almost the same as the one that appeare
 Sheldon.
 
 This is the one that appeared on the show.
-![Sheldonlist](https://imgur.com/a/Ms443Uh)
+![Sheldonlist](https://imgur.com/a/Ms443Uh/img)
 
 Secondly, to make the website customizable, instead of merely a demonstration website, I decided
 to create the website using Flask to make it dynamic. Combined with a strategically coded database
