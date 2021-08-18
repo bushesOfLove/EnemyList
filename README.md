@@ -10,8 +10,7 @@ features to enhance the website's performance and accurately present the interfa
 used.
 
 First of all, to resemble the enemies list in the show as closely as I can, I spent lots of time
-adjusting its appearance. At last, it is almost the same as the one that appeared in Young
-Sheldon.
+adjusting its appearance. At last, it looked like one that appeared in Young Sheldon with some minor tweaks.
 
 This is the one that appeared on the show.
 ![Sheldonlist](https://i.imgur.com/9tBmn4l.png)
