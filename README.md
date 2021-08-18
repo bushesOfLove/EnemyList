@@ -14,6 +14,9 @@ adjusting its appearance. At last, it is almost the same as the one that appeare
 Sheldon.
 
 This is the one that appeared on the show.
+![Sheldonlist](https://i.imgur.com/9tBmn4l.png)
+
+This is the one on the website
 ![Sheldonlist](https://i.imgur.com/aiXsfqL.png)
 
 Secondly, to make the website customizable, instead of merely a demonstration website, I decided
