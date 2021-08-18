@@ -13,6 +13,9 @@ First of all, to resemble the enemies list in the show as closely as I can, I sp
 adjusting its appearance. At last, it is almost the same as the one that appeared in Young
 Sheldon.
 
+This is the one that appeared on the show.
+![Sheldon's enemies list](https://ibb.co/xCzxNZL)
+
 Secondly, to make the website customizable, instead of merely a demonstration website, I decided
 to create the website using Flask to make it dynamic. Combined with a strategically coded database
 to prevent SQL injections, the website allows users to register for their own enemies list and add
